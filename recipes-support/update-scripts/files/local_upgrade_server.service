@@ -1,0 +1,16 @@
+[Unit]
+Description=Upgrade server
+After=syslog.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=@BINDIR@/upgrade-server
+ExecStart=@BINDIR@/upgrade-server/server_frontend.py
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
